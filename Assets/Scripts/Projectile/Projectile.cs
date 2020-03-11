@@ -13,6 +13,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter");
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if(enemy == null)
+        {
+            return;
+        }
+
+        enemy.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

@@ -24,7 +24,7 @@ public class ProjectileManager : MonoBehaviour
         List<GameObject> spawnedObjects = new List<GameObject>();
         for (int i = 0; i < count; i++)
         {
-            GameObject spawnedGo = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+            GameObject spawnedGo = Instantiate(objectToSpawn, transform);
             spawnedGo.SetActive(false);
             spawnedObjects.Add(spawnedGo);
         }
