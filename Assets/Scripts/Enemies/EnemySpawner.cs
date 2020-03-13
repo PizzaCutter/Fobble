@@ -12,10 +12,10 @@ public class EnemySpawner : MonoBehaviour
     }
 
     [SerializeField]
-    private List<SpawnZone> SpawnZones;
+    private List<SpawnZone> SpawnZones = new List<SpawnZone>();
 
     [SerializeField]
-    private List<GameObject> Enemies;
+    private List<GameObject> Enemies = new List<GameObject>();
 
     [SerializeField]
     private AnimationCurve SpawnTimeInterval = null;
