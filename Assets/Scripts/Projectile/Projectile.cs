@@ -20,8 +20,8 @@ public class Projectile : MonoBehaviour
         {
             return;
         }
-
-        enemy.gameObject.SetActive(false);
+        enemy.Kill();
+       
         gameObject.SetActive(false);
     }
 }

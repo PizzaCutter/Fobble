@@ -922,6 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1444955907}
   - component: {fileID: 1444955908}
+  - component: {fileID: 1444955909}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -967,7 +968,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 4
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -976,7 +977,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 4
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -986,6 +987,25 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1444955909
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444955906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db43759291cf89b4c8dbb7f4f3890d2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1670690807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1267,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].value
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].inSlope
+      value: 0.44444445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].outSlope
+      value: 0.44444445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0.44444445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0.44444445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].value
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782651, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}

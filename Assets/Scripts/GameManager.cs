@@ -28,11 +28,22 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1.0f;
+
+        OverlayButton.SetActive(false);
+
         StartTextAnimator.Play("FadeOut");
 
         CounterAnimator.Play("FadeIn");
         CounterAnimator.gameObject.SetActive(true);
-
+        
         Debug.Log("StartGame");
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        OverlayButton.SetActive(true);
+        
+        CounterAnimator.Play("FadeOut");
     }
 }

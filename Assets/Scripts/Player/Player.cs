@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private GameManager GameManager = null;
+
+    private void Start()
+    {
+        GameManager = FindObjectOfType<GameManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
@@ -11,10 +18,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        
-        enemy.gameObject.SetActive(false);
 
-        //Restart Game
-        //Application.LoadLevel(0);
+        GameManager.GameOver();
     }
 }
