@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Animator Animator = null;
     [SerializeField]
+    private AnimationClip IdleAnimation = null;
+    [SerializeField]
     private AnimationClip DieAnimation = null;
 
     private Rigidbody2D rigidBody2D = null;
@@ -39,6 +41,8 @@ public class Enemy : MonoBehaviour
 
         boxCollider2D.enabled = true;
         moveTowardsScript.enabled = true;
+
+        Animator.Play(IdleAnimation.name);
     }
 
     public void Kill()

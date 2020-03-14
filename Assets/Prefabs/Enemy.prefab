@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 2545159624196247829}
+  IdleAnimation: {fileID: 7400000, guid: 1b30c6d873f987e46a97a677c774b349, type: 2}
   DieAnimation: {fileID: 7400000, guid: fc1fdf7c72fec704195ad762b5d0fc29, type: 2}
 --- !u!114 &1990742405513720246
 MonoBehaviour:

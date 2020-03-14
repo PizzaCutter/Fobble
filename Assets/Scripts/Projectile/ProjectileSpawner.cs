@@ -11,7 +11,7 @@ public class ProjectileSpawner : MonoBehaviour
     private GameObject ProjectileToSpawn = null;
 
     private ProjectileManager projectileManager;
-    
+
     void Start()
     {
         projectileManager = FindObjectOfType<ProjectileManager>();

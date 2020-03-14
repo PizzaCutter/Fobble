@@ -673,6 +673,18 @@ MonoBehaviour:
   ProjectileSpawnTransform: {fileID: 4902453691477799928}
   ProjectileToSpawn: {fileID: 396730765553101654, guid: 9bb774a2bf47b1c44a281b02ad608c02,
     type: 3}
+--- !u!114 &1158143672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
+    type: 3}
+  m_PrefabInstance: {fileID: 4902453691477799926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158143669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09577549e7a5c14e946d20d0e6699a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187361097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1198,9 @@ MonoBehaviour:
   OverlayButton: {fileID: 1670690807}
   StartTextAnimator: {fileID: 1187361101}
   CounterAnimator: {fileID: 248729601}
+  EnemySpawner: {fileID: 1444955908}
+  Player: {fileID: 1158143672}
+  GameOverTime: 1
 --- !u!1001 &4902453691477799926
 PrefabInstance:
   m_ObjectHideFlags: 0

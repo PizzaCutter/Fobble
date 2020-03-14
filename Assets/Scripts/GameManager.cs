@@ -19,6 +19,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Animator CounterAnimator = null;
 
+    [SerializeField]
+    private EnemySpawner EnemySpawner = null;
+
+    [SerializeField]
+    private Player Player = null;
+
+    [SerializeField]
+    private float GameOverTime = 1.0f;
+
+
     void Start()
     {
         Time.timeScale = 0.0f;
@@ -36,14 +46,26 @@ public class GameManager : MonoBehaviour
         CounterAnimator.Play("FadeIn");
         CounterAnimator.gameObject.SetActive(true);
         
-        Debug.Log("StartGame");
+        Player.ResetPlayer();
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0.0f;
-        OverlayButton.SetActive(true);
-        
         CounterAnimator.Play("FadeOut");
+        EnemySpawner.KillAll();
+        Player.Kill();
+
+        OverlayButton.SetActive(true);
+        StartTextAnimator.Play("FadeIn");
+        StartCoroutine(GameOverMenu());
+    }
+
+    IEnumerator GameOverMenu()
+    {
+        yield return new WaitForSeconds(GameOverTime);
+        Debug.Log("GAME OVER MENU");
+       
+        Time.timeScale = 0.0f;
+
     }
 }

@@ -11,6 +11,12 @@ public class EnemySpawner : MonoBehaviour
         public BoxCollider2D colliderZone;
     }
 
+    struct EnemyObj
+    {
+        public GameObject go;
+        public Enemy enemyScript;
+    }
+
     [SerializeField]
     private List<SpawnZone> SpawnZones = new List<SpawnZone>();
 
@@ -23,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private float SpawnTimer = 0.0f;
     private float timeSinceStart = 0.0f;
 
-    private Dictionary<GameObject, List<GameObject>> EnemyPool = new Dictionary<GameObject, List<GameObject>>();
+    private Dictionary<GameObject, List<EnemyObj>> EnemyPool = new Dictionary<GameObject, List<EnemyObj>>();
 
     void Update()
     {
@@ -48,25 +54,28 @@ public class EnemySpawner : MonoBehaviour
         {
             foreach (var e in EnemyPool[enemy])
             {
-                if(e == null)
+                if(e.go == null)
                 {
                     continue;
                 }
-                if(e.activeSelf == false)
+                if(e.go.activeSelf == false)
                 {
-                    return e;
+                    return e.go;
                 }
             }
         }
         else
         {
-            EnemyPool.Add(enemy, new List<GameObject>());
+            EnemyPool.Add(enemy, new List<EnemyObj>());
         }
 
         if(retrievedEnemy == null)
         {
             retrievedEnemy = Instantiate(enemy, transform);
-            EnemyPool[enemy].Add(retrievedEnemy);
+            EnemyObj enemyObj = new EnemyObj();
+            enemyObj.go = retrievedEnemy;
+            enemyObj.enemyScript = retrievedEnemy.GetComponent<Enemy>();
+            EnemyPool[enemy].Add(enemyObj);
         }
         return retrievedEnemy;
     }
@@ -81,10 +90,24 @@ public class EnemySpawner : MonoBehaviour
         Vector2 spawnLocation = new Vector2(xOffset, yOffset);
 
         GameObject go = GetEnemy(Enemies[Random.Range(0, Enemies.Count)]);
-        //go.transform.position = spawnLocation;
-        //go.GetComponent<Rigidbody2D>().position = spawnLocation;
         go.transform.position = spawnLocation;
         go.SetActive(true);
     }
 
+    public void KillAll()
+    {
+        foreach(var enemy in EnemyPool)
+        {
+            foreach(var enemyObj in enemy.Value)
+            {
+                if(enemyObj.enemyScript != null)
+                {
+                    enemyObj.enemyScript.Kill();
+                }
+            }
+        }
+
+        SpawnTimer = 0.0f;
+        timeSinceStart = 0.0f;
+    }
 }
