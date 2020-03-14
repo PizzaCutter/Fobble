@@ -5,9 +5,13 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float MovementSpeed = 10.0f;
+    private Player player = null;
 
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
-    //physics update
     void FixedUpdate()
     {
         transform.position += transform.up * MovementSpeed * Time.deltaTime;        
@@ -23,5 +27,6 @@ public class Projectile : MonoBehaviour
         enemy.Kill();
        
         gameObject.SetActive(false);
+        player.AddScore();
     }
 }
