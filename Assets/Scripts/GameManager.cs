@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     private GameObject OverlayButton = null;
 
     [SerializeField]
-    private Animator StartTextAnimator = null;
-
-    [SerializeField]
     private Animator CounterAnimator = null;
 
     [SerializeField]
@@ -29,6 +26,7 @@ public class GameManager : MonoBehaviour
     private float GameOverTime = 1.0f;
 
     [SerializeField] private UIGameOver GameOverUI = null;
+    [SerializeField] private UIGameIntro GameIntroUI = null;
 
 
     void Start()
@@ -44,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         OverlayButton.SetActive(false);
 
-        StartTextAnimator.Play("FadeOut");
+        GameIntroUI.DisableUI();
         GameOverUI.DisableUI();
 
         CounterAnimator.Play("FadeIn");
@@ -61,7 +59,7 @@ public class GameManager : MonoBehaviour
         Player.Kill();
 
         OverlayButton.SetActive(true);
-        StartTextAnimator.Play("FadeIn");
+        GameIntroUI.EnableUI();
         GameOverUI.EnableUI();
 
         StartCoroutine(GameOverMenu());

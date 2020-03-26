@@ -49,13 +49,13 @@ public class Projectile : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x) > ScreenWidth / 2.0f)
         {
-            this.gameObject.SetActive(false);
             Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
+            this.gameObject.SetActive(false);
         }
         else if (Mathf.Abs(transform.position.y) > ScreenHeight * 2.25f)
         {
+            SpawnDestroyedParticleSystem();
             this.gameObject.SetActive(false);
-            Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
         }
     }
 
@@ -67,9 +67,15 @@ public class Projectile : MonoBehaviour
             return;
         }
         enemy.Kill();
-        Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
+        SpawnDestroyedParticleSystem();
 
         gameObject.SetActive(false);
         player.AddScore();
+    }
+
+    private void SpawnDestroyedParticleSystem()
+    {
+        ParticleSystem go = Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
+        Destroy(go, destroyedParticleSystem.main.duration);
     }
 }

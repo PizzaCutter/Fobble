@@ -13,13 +13,13 @@ public class Enemy : MonoBehaviour
     private AnimationClip DieAnimation = null;
 
     private Rigidbody2D rigidBody2D = null;
-    private Collider2D collider2D = null;
+    private Collider2D coll2D = null;
     private MoveTowardsPlayer moveTowardsScript = null;
 
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
-        collider2D = GetComponent<Collider2D>();
+        coll2D = GetComponent<Collider2D>();
         moveTowardsScript = GetComponent<MoveTowardsPlayer>();
     }
 
@@ -29,16 +29,16 @@ public class Enemy : MonoBehaviour
         {
             rigidBody2D = GetComponent<Rigidbody2D>();
         }
-        if (collider2D == null)
+        if (coll2D == null)
         {
-            collider2D = GetComponent<Collider2D>();
+            coll2D = GetComponent<Collider2D>();
         }
         if(moveTowardsScript == null)
         {
             moveTowardsScript = GetComponent<MoveTowardsPlayer>();
         }
 
-        collider2D.enabled = true;
+        coll2D.enabled = true;
         moveTowardsScript.enabled = true;
 
         Animator.Play(IdleAnimation.name);
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     {
         Animator.Play(DieAnimation.name);
 
-        collider2D.enabled = false;
+        coll2D.enabled = false;
         moveTowardsScript.enabled = false;
 
         if (this.gameObject.activeSelf)
