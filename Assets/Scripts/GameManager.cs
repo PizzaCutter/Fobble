@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1.0f;
+        EnemySpawner.StopSpawning = false;
 
         OverlayButton.SetActive(false);
 
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         CounterAnimator.Play("FadeOut");
+        EnemySpawner.StopSpawning = true;
         EnemySpawner.KillAll();
         Player.Kill();
 
@@ -63,7 +65,6 @@ public class GameManager : MonoBehaviour
     IEnumerator GameOverMenu()
     {
         yield return new WaitForSeconds(GameOverTime);
-        Debug.Log("GAME OVER MENU");
        
         Time.timeScale = 0.0f;
 

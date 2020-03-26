@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         ProjectileSpawner.enabled = true;
         transform.rotation = Quaternion.identity;
         score = 0;
+        SetScoreUI();
     }
 
     public void AddScore()
