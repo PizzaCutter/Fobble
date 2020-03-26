@@ -18,9 +18,6 @@ public class EnemySpawner : MonoBehaviour
     }
 
     [SerializeField]
-    private List<SpawnZone> SpawnZones = new List<SpawnZone>();
-
-    [SerializeField]
     private List<GameObject> Enemies = new List<GameObject>();
 
     [SerializeField]
@@ -31,8 +28,31 @@ public class EnemySpawner : MonoBehaviour
 
     private Dictionary<GameObject, List<EnemyObj>> EnemyPool = new Dictionary<GameObject, List<EnemyObj>>();
 
+    private float ScreenWidth = 1.0f;
+    private float ScreenHeight = 1.0f;
+
+    public bool StopSpawning = true;
+
+    void Awake()
+    {
+        Camera camera = Camera.main;
+        if (camera == null)
+        {
+            return;
+        }
+
+        ScreenWidth = (float)camera.scaledPixelWidth / (float)camera.scaledPixelHeight * 10.0f;
+        ScreenHeight = (float)camera.scaledPixelHeight / (float)camera.scaledPixelWidth;
+
+    }
+
     void Update()
     {
+        if (StopSpawning)
+        {
+            return;
+        }
+
         timeSinceStart += Time.deltaTime;
 
         if (SpawnTimer <= 0.0f)
@@ -82,11 +102,22 @@ public class EnemySpawner : MonoBehaviour
     
     void SpawnEnemy()
     {
-        SpawnZone randomSpawnZone = SpawnZones[Random.Range(0, SpawnZones.Count)];
-        float xOffset = Random.Range(0.0f, randomSpawnZone.colliderZone.size.x) - randomSpawnZone.colliderZone.size.x / 2.0f;
-        float yOffset = Random.Range(0.0f, randomSpawnZone.colliderZone.size.y) - randomSpawnZone.colliderZone.size.y / 2.0f;
-        xOffset += randomSpawnZone.colliderZone.transform.position.x;
-        yOffset += randomSpawnZone.colliderZone.transform.position.y;
+        bool spawnTop = Random.Range(0, 2) == 1;
+
+        float xOffset = 0.0f;
+        float yOffset = 0.0f;
+
+        if (spawnTop)
+        {
+            yOffset = ScreenHeight * 2.5f;
+
+        }
+        else
+        {
+            yOffset = -ScreenHeight * 2.5f;
+        }
+
+        xOffset = Random.Range(-ScreenWidth, ScreenWidth);
         Vector2 spawnLocation = new Vector2(xOffset, yOffset);
 
         GameObject go = GetEnemy(Enemies[Random.Range(0, Enemies.Count)]);
