@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
@@ -14,13 +13,13 @@ public class Enemy : MonoBehaviour
     private AnimationClip DieAnimation = null;
 
     private Rigidbody2D rigidBody2D = null;
-    private BoxCollider2D boxCollider2D = null;
+    private Collider2D collider2D = null;
     private MoveTowardsPlayer moveTowardsScript = null;
 
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        collider2D = GetComponent<Collider2D>();
         moveTowardsScript = GetComponent<MoveTowardsPlayer>();
     }
 
@@ -30,16 +29,16 @@ public class Enemy : MonoBehaviour
         {
             rigidBody2D = GetComponent<Rigidbody2D>();
         }
-        if (boxCollider2D == null)
+        if (collider2D == null)
         {
-            boxCollider2D = GetComponent<BoxCollider2D>();
+            collider2D = GetComponent<Collider2D>();
         }
         if(moveTowardsScript == null)
         {
             moveTowardsScript = GetComponent<MoveTowardsPlayer>();
         }
 
-        boxCollider2D.enabled = true;
+        collider2D.enabled = true;
         moveTowardsScript.enabled = true;
 
         Animator.Play(IdleAnimation.name);
@@ -49,7 +48,7 @@ public class Enemy : MonoBehaviour
     {
         Animator.Play(DieAnimation.name);
 
-        boxCollider2D.enabled = false;
+        collider2D.enabled = false;
         moveTowardsScript.enabled = false;
 
         if (this.gameObject.activeSelf)

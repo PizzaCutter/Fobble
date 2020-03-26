@@ -41,7 +41,6 @@ public class Projectile : MonoBehaviour
 
     private void OnDisable()
     {
-        Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
     }
 
     void FixedUpdate()
@@ -51,11 +50,12 @@ public class Projectile : MonoBehaviour
         if (Mathf.Abs(transform.position.x) > ScreenWidth / 2.0f)
         {
             this.gameObject.SetActive(false);
-
+            Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
         }
         else if (Mathf.Abs(transform.position.y) > ScreenHeight * 2.25f)
         {
             this.gameObject.SetActive(false);
+            Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
         }
     }
 
@@ -67,6 +67,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         enemy.Kill();
+        Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
 
         gameObject.SetActive(false);
         player.AddScore();
