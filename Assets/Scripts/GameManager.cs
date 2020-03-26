@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float GameOverTime = 1.0f;
 
+    [SerializeField] private UIGameOver GameOverUI = null;
+
 
     void Start()
     {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         OverlayButton.SetActive(false);
 
         StartTextAnimator.Play("FadeOut");
+        GameOverUI.DisableUI();
 
         CounterAnimator.Play("FadeIn");
         CounterAnimator.gameObject.SetActive(true);
@@ -59,6 +62,8 @@ public class GameManager : MonoBehaviour
 
         OverlayButton.SetActive(true);
         StartTextAnimator.Play("FadeIn");
+        GameOverUI.EnableUI();
+
         StartCoroutine(GameOverMenu());
     }
 

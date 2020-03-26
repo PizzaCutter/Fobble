@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     private Text scoreText = null;
 
     private int score = 0;
-
     private void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
@@ -38,6 +37,12 @@ public class Player : MonoBehaviour
     {
         Rotator.StopRotation();
         ProjectileSpawner.enabled = false;
+
+        int highScore = PlayerPrefs.GetInt("HighScore");
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
     }
 
     public void ResetPlayer()
@@ -54,10 +59,13 @@ public class Player : MonoBehaviour
         score++;
         SetScoreUI();
     }
+    public int GetScore()
+    {
+        return score;
+    }
 
     private void SetScoreUI()
     {
         scoreText.text = "SCORE: " + score;
-
     }
 }

@@ -52,7 +52,10 @@ public class Enemy : MonoBehaviour
         boxCollider2D.enabled = false;
         moveTowardsScript.enabled = false;
 
-        StartCoroutine(AnimationFinished());
+        if (this.gameObject.activeSelf)
+        {
+            StartCoroutine(AnimationFinished());
+        }
     }
 
     IEnumerator AnimationFinished()
