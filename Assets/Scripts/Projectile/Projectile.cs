@@ -10,6 +10,12 @@ public class Projectile : MonoBehaviour
     private float ScreenWidth = 0.0f;
     float ScreenHeight = 0.0f;
 
+    [SerializeField] 
+    private ParticleSystem destroyedParticleSystem = null;
+
+    [SerializeField]
+    private TrailRenderer trailRenderer = null;
+
     void Awake()
     {
         Camera camera = Camera.main;
@@ -26,6 +32,16 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
+    }
+
+    private void OnEnable()
+    {
+        trailRenderer.Clear();
+    }
+
+    private void OnDisable()
+    {
+        Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
     }
 
     void FixedUpdate()
@@ -51,7 +67,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         enemy.Kill();
-       
+
         gameObject.SetActive(false);
         player.AddScore();
     }
