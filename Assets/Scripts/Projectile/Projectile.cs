@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public delegate void ProjectileDestroyed(Projectile projRef);
+    public event ProjectileDestroyed ProjectileIsDestroyed;
+
     public float MovementSpeed = 10.0f;
 
     private float ScreenWidth = 0.0f;
@@ -106,6 +109,7 @@ public class Projectile : MonoBehaviour
             CachedDestroyedParticleSystem.Play();
         }
 
+        ProjectileIsDestroyed(this);
         StartCoroutine(DisableGameObjectAfterParticleEffect());
     }
 

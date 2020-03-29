@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Text scoreText = null;
 
+    [SerializeField] 
+    private List<GameObject> AmmoGameObjects = new List<GameObject>();
+
     private int score = 0;
     private void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
         ProjectileSpawner = GetComponent<ProjectileSpawner>();
+        ProjectileSpawner.ProjectileCountChangedEvent += ProjectileCountChanged;
         Rotator = GetComponent<Rotator>();
         SetScoreUI();
 
@@ -67,5 +71,14 @@ public class Player : MonoBehaviour
     private void SetScoreUI()
     {
         scoreText.text = "SCORE: " + score;
+    }
+    
+    private void ProjectileCountChanged(int newProjectileCount)
+    {
+        for(int i = 0; i < AmmoGameObjects.Count; i++)
+        {
+            bool shouldBeActive = newProjectileCount > i ? true : false;
+            AmmoGameObjects[i].SetActive(shouldBeActive);
+        }
     }
 }
