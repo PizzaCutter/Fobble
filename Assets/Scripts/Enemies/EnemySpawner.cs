@@ -43,7 +43,6 @@ public class EnemySpawner : MonoBehaviour
 
         ScreenWidth = (float)camera.scaledPixelWidth / (float)camera.scaledPixelHeight * 10.0f;
         ScreenHeight = (float)camera.scaledPixelHeight / (float)camera.scaledPixelWidth;
-
     }
 
     void Update()
@@ -109,12 +108,13 @@ public class EnemySpawner : MonoBehaviour
 
         if (spawnTop)
         {
-            yOffset = ScreenHeight * 2.5f;
+            yOffset = ScreenHeight * ScreenWidth * 0.75f;
+          
 
         }
         else
         {
-            yOffset = -ScreenHeight * 2.5f;
+            yOffset = -ScreenHeight * ScreenWidth * 0.75f;
         }
 
         xOffset = Random.Range(-ScreenWidth, ScreenWidth);
