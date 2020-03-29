@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        StopCoroutine(GameOverMenu());
+        
         Time.timeScale = 1.0f;
         EnemySpawner.StopSpawning = false;
 
