@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 183211856}
   - component: {fileID: 183211859}
   - component: {fileID: 183211858}
-  - component: {fileID: 183211857}
   m_Layer: 5
   m_Name: Text_CurrentScoreValue
   m_TagString: Untagged
@@ -159,25 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: 58, y: -85}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!95 &183211857
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183211855}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a8eb38fa358fa947a8c5fb0cefdf7f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &183211858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +275,6 @@ GameObject:
   - component: {fileID: 248729600}
   - component: {fileID: 248729603}
   - component: {fileID: 248729602}
-  - component: {fileID: 248729601}
   m_Layer: 5
   m_Name: Text_Score
   m_TagString: Untagged
@@ -310,37 +289,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248729599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 651954964}
-  m_RootOrder: 3
+  m_Father: {fileID: 1483742942}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -12.5, y: -25}
   m_SizeDelta: {x: -24.999983, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!95 &248729601
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248729599}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a8eb38fa358fa947a8c5fb0cefdf7f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &248729602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +354,6 @@ GameObject:
   - component: {fileID: 280628356}
   - component: {fileID: 280628359}
   - component: {fileID: 280628358}
-  - component: {fileID: 280628357}
   m_Layer: 5
   m_Name: Text_CurrentScore
   m_TagString: Untagged
@@ -422,25 +381,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!95 &280628357
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280628355}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a8eb38fa358fa947a8c5fb0cefdf7f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &280628358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +516,6 @@ RectTransform:
   - {fileID: 1483742942}
   - {fileID: 219209387}
   - {fileID: 1670690808}
-  - {fileID: 248729600}
   - {fileID: 787480294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -673,6 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787480294}
   - component: {fileID: 787480295}
+  - component: {fileID: 787480296}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -694,7 +634,7 @@ RectTransform:
   - {fileID: 280628356}
   - {fileID: 2047594493}
   m_Father: {fileID: 651954964}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -715,6 +655,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newScoreText: {fileID: 183211858}
   highScoreText: {fileID: 1189305957}
+  EnableAnimation: {fileID: 0}
+  DisableAnimation: {fileID: 0}
+--- !u!95 &787480296
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787480293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &900948000
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +947,6 @@ GameObject:
   - component: {fileID: 1189305955}
   - component: {fileID: 1189305958}
   - component: {fileID: 1189305957}
-  - component: {fileID: 1189305956}
   m_Layer: 5
   m_Name: Text_HighestScoreValue
   m_TagString: Untagged
@@ -1013,25 +973,6 @@ RectTransform:
   m_AnchoredPosition: {x: 58, y: -85}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!95 &1189305956
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189305954}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a8eb38fa358fa947a8c5fb0cefdf7f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1189305957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,6 +1276,7 @@ RectTransform:
   m_Children:
   - {fileID: 724363807}
   - {fileID: 1187361098}
+  - {fileID: 248729600}
   m_Father: {fileID: 651954964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1556,7 +1498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OverlayButton: {fileID: 1670690807}
-  CounterAnimator: {fileID: 248729601}
   EnemySpawner: {fileID: 1444955908}
   Player: {fileID: 1158143672}
   GameOverTime: 1
@@ -1573,7 +1514,6 @@ GameObject:
   - component: {fileID: 2047594493}
   - component: {fileID: 2047594496}
   - component: {fileID: 2047594495}
-  - component: {fileID: 2047594494}
   m_Layer: 5
   m_Name: Text_HighestScore
   m_TagString: Untagged
@@ -1601,25 +1541,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
---- !u!95 &2047594494
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047594492}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a8eb38fa358fa947a8c5fb0cefdf7f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2047594495
 MonoBehaviour:
   m_ObjectHideFlags: 0

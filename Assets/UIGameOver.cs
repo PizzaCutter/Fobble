@@ -13,22 +13,30 @@ public class UIGameOver : MonoBehaviour
     [SerializeField]
     private Text highScoreText = null;
 
+    [SerializeField] 
+    private AnimationClip EnableAnimation = null;
+
+    [SerializeField]
+    private AnimationClip DisableAnimation = null;
+
+    private Animator Animator = null;
+
     void Awake()
     {
-        player = FindObjectOfType<Player>();
-        
+        Animator = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();     
     }
 
     public void EnableUI()
     {
         newScoreText.text = player.GetScore().ToString();
         highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
-        this.gameObject.SetActive(true);
+        Animator.Play(EnableAnimation.name);
     }
 
     public void DisableUI()
     {
-        this.gameObject.SetActive(false);
+        Animator.Play(DisableAnimation.name);
     }
 
 }

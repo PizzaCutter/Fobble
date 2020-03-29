@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class UIGameIntro : MonoBehaviour
 {
-    [SerializeField] 
-    private Text TextTitle = null;
-
-    [SerializeField]
-    private Text TextStartGame = null;
-
     [SerializeField]
     private AnimationClip DisableAnimation = null;
     [SerializeField]

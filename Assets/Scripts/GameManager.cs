@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     private GameObject OverlayButton = null;
 
     [SerializeField]
-    private Animator CounterAnimator = null;
-
-    [SerializeField]
     private EnemySpawner EnemySpawner = null;
 
     [SerializeField]
@@ -32,7 +29,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0.0f;
-        CounterAnimator.gameObject.SetActive(false);
     }
 
     public void StartGame()
@@ -45,15 +41,12 @@ public class GameManager : MonoBehaviour
         GameIntroUI.DisableUI();
         GameOverUI.DisableUI();
 
-        CounterAnimator.Play("FadeIn");
-        CounterAnimator.gameObject.SetActive(true);
         
         Player.ResetPlayer();
     }
 
     public void GameOver()
     {
-        CounterAnimator.Play("FadeOut");
         EnemySpawner.StopSpawning = true;
         EnemySpawner.KillAll();
         Player.Kill();
