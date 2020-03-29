@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         StopCoroutine(GameOverMenu());
-        
+
         Time.timeScale = 1.0f;
         EnemySpawner.StopSpawning = false;
 
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(GameOverTime);
        
-        Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
 
     }
 }
