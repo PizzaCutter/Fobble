@@ -5,16 +5,24 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float MovementSpeed = 10.0f;
-    private Player player = null;
 
     private float ScreenWidth = 0.0f;
-    float ScreenHeight = 0.0f;
+    private float ScreenHeight = 0.0f;
+    private bool Destroyed = false;
+
+    private Player player = null;
+
+    private Collider2D AttachedCollider2D = null;
+    [SerializeField] 
+    private GameObject visualsChildObject = null;
+
+    [SerializeField]
+    private TrailRenderer trailRenderer = null;
 
     [SerializeField] 
     private ParticleSystem destroyedParticleSystem = null;
 
-    [SerializeField]
-    private TrailRenderer trailRenderer = null;
+    private ParticleSystem CachedDestroyedParticleSystem = null;
 
     void Awake()
     {
@@ -31,31 +39,39 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        AttachedCollider2D = GetComponent<Collider2D>();
         player = FindObjectOfType<Player>();
     }
 
     private void OnEnable()
     {
+        Destroyed = false;
+
+        if (AttachedCollider2D != null)
+        {
+            AttachedCollider2D.enabled = true;
+        }
+
         trailRenderer.Clear();
+        visualsChildObject.SetActive(true);
     }
-
-    private void OnDisable()
-    {
-    }
-
+    
     void FixedUpdate()
     {
+        if(Destroyed == true)
+        {
+            return;
+        }
+
         transform.position += transform.up * MovementSpeed * Time.deltaTime;
 
         if (Mathf.Abs(transform.position.x) > ScreenWidth / 2.0f)
         {
-            Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
-            this.gameObject.SetActive(false);
+            DestroyProjectile();
         }
-        else if (Mathf.Abs(transform.position.y) > ScreenHeight * 2.25f)
+        else if (Mathf.Abs(transform.position.y) > (ScreenHeight * ScreenWidth * 0.5f))
         {
-            SpawnDestroyedParticleSystem();
-            this.gameObject.SetActive(false);
+            DestroyProjectile();
         }
     }
 
@@ -67,15 +83,37 @@ public class Projectile : MonoBehaviour
             return;
         }
         enemy.Kill();
-        SpawnDestroyedParticleSystem();
-
-        gameObject.SetActive(false);
         player.AddScore();
+
+        DestroyProjectile();
     }
 
-    private void SpawnDestroyedParticleSystem()
+    private void DestroyProjectile()
     {
-        ParticleSystem go = Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity);
-        Destroy(go, destroyedParticleSystem.main.duration);
+        Destroyed = true;
+
+        AttachedCollider2D.enabled = false;
+        visualsChildObject.SetActive(false);
+
+        if (CachedDestroyedParticleSystem == null)
+        {
+            CachedDestroyedParticleSystem = Instantiate(destroyedParticleSystem, transform.position, Quaternion.identity, transform.parent);
+        }
+        else
+        {
+            CachedDestroyedParticleSystem.transform.position = transform.position;
+            CachedDestroyedParticleSystem.gameObject.SetActive(true);
+            CachedDestroyedParticleSystem.Play();
+        }
+
+        StartCoroutine(DisableGameObjectAfterParticleEffect());
     }
+
+    IEnumerator DisableGameObjectAfterParticleEffect()
+    {
+        yield return new WaitForSeconds(CachedDestroyedParticleSystem.main.duration);
+        CachedDestroyedParticleSystem.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
 }

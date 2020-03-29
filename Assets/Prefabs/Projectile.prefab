@@ -62,9 +62,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 1
+  visualsChildObject: {fileID: 396730766658724200}
+  trailRenderer: {fileID: 4080551256154825618}
   destroyedParticleSystem: {fileID: 7345039383090068019, guid: be2698aaa5652c54b9cb54ed75fd6046,
     type: 3}
-  trailRenderer: {fileID: 4080551256154825618}
 --- !u!1 &396730766658724200
 GameObject:
   m_ObjectHideFlags: 0
