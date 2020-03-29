@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private List<GameObject> AmmoGameObjects = new List<GameObject>();
 
     private int score = 0;
+    private int previousHighScore = 0;
+
     private void Start()
     {
         GameManager = FindObjectOfType<GameManager>();
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
         int highScore = PlayerPrefs.GetInt("HighScore");
         if (score > highScore)
         {
+            previousHighScore = highScore;
             PlayerPrefs.SetInt("HighScore", score);
         }
     }
@@ -66,6 +69,11 @@ public class Player : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public int GetPrevHighScore()
+    {
+        return previousHighScore;
     }
 
     private void SetScoreUI()

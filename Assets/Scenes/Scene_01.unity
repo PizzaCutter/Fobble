@@ -423,6 +423,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280628355}
   m_CullTransparentMesh: 0
+--- !u!1 &563252540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4064403946468976615, guid: 7446dccd09031d14d8e96954c0476137,
+    type: 3}
+  m_PrefabInstance: {fileID: 4902453691477799926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651954960
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +661,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newScoreText: {fileID: 183211858}
   highScoreText: {fileID: 1189305957}
-  EnableAnimation: {fileID: 0}
-  DisableAnimation: {fileID: 0}
+  EnableAnimation: {fileID: 7400000, guid: 9c992dc625618fe4d81a5b1e67394ca9, type: 2}
+  DisableAnimation: {fileID: 7400000, guid: 152b136c76f94e045a0493ae38b6e1ec, type: 2}
+  ScoreLerpTime: 2
 --- !u!95 &787480296
 Animator:
   serializedVersion: 3
@@ -667,7 +674,7 @@ Animator:
   m_GameObject: {fileID: 787480293}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44c177b7b82ca834eb8480c243b63d16, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -847,6 +854,7 @@ MonoBehaviour:
   ProjectileSpawnTransform: {fileID: 4902453691477799928}
   ProjectileToSpawn: {fileID: 396730765553101654, guid: 9bb774a2bf47b1c44a281b02ad608c02,
     type: 3}
+  ConcurrentProjectileAmount: 3
 --- !u!114 &1158143672 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
@@ -1013,6 +1021,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189305954}
   m_CullTransparentMesh: 0
+--- !u!1 &1310752897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4375489652144920625, guid: 7446dccd09031d14d8e96954c0476137,
+    type: 3}
+  m_PrefabInstance: {fileID: 4902453691477799926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1377811520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,8 +1311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d3b239672f3964d8d5eef582a54d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextTitle: {fileID: 724363809}
-  TextStartGame: {fileID: 1187361099}
   DisableAnimation: {fileID: 7400000, guid: db87b1b08a04e904084ab5618d6a11a3, type: 2}
   EnableAnimation: {fileID: 7400000, guid: a2da0a720c08f0f47a0a37fa3bc57d5d, type: 2}
 --- !u!95 &1483742944
@@ -1448,6 +1460,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670690807}
   m_CullTransparentMesh: 0
+--- !u!1 &1876529966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4902453690268499831, guid: 7446dccd09031d14d8e96954c0476137,
+    type: 3}
+  m_PrefabInstance: {fileID: 4902453691477799926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1929738079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,7 +1581,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 100
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 143
     m_Alignment: 0
@@ -1590,9 +1608,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
+      propertyPath: AmmoGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 248729602}
+    - target: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: AmmoGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1876529966}
+    - target: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: AmmoGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 563252540}
+    - target: {fileID: 4902453689795782630, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: AmmoGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1310752897}
     - target: {fileID: 4902453689795782631, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1702,6 +1740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453690268499828, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.727
       objectReference: {fileID: 0}
     - target: {fileID: 4902453690268499829, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}

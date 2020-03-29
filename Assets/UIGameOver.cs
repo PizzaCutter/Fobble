@@ -21,16 +21,37 @@ public class UIGameOver : MonoBehaviour
 
     private Animator Animator = null;
 
+    [SerializeField]
+    private float ScoreLerpTime = 2.0f;
+    private float scoreTimer = 0.0f;
+
     void Awake()
     {
         Animator = GetComponent<Animator>();
         player = FindObjectOfType<Player>();     
     }
 
+    private void Update() {
+        
+        if(scoreTimer <= ScoreLerpTime)
+        {
+            scoreTimer += Time.unscaledDeltaTime;
+            Debug.Log(scoreTimer / ScoreLerpTime);
+            int newLerpScore =  Mathf.CeilToInt(Mathf.Lerp(0.0f, player.GetScore(), scoreTimer / ScoreLerpTime));
+            newScoreText.text = newLerpScore.ToString();
+
+            if(newLerpScore > player.GetPrevHighScore())
+            {
+                highScoreText.text = newLerpScore.ToString();
+            }
+        }
+    }
+
     public void EnableUI()
     {
+        scoreTimer = 0.0f;
         newScoreText.text = player.GetScore().ToString();
-        highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
+        highScoreText.text = player.GetPrevHighScore().ToString();
         Animator.Play(EnableAnimation.name);
     }
 
