@@ -12,17 +12,23 @@ public class UIGameIntro : MonoBehaviour
     private Text TextStartGame = null;
 
     [SerializeField]
-    private Animator StartTextAnimator = null;
+    private AnimationClip DisableAnimation = null;
+    [SerializeField]
+    private AnimationClip EnableAnimation = null;
+
+    private Animator GameStartAnimator = null;
+
+    private void Start() {
+        GameStartAnimator = GetComponent<Animator>();    
+    }
 
     public void EnableUI()
     {
-        TextTitle.gameObject.SetActive(true);
-        StartTextAnimator.Play("FadeIn");
+        GameStartAnimator.Play(EnableAnimation.name);
     }
 
     public void DisableUI()
     {
-        TextTitle.gameObject.SetActive(false);
-        StartTextAnimator.Play("FadeOut");
+        GameStartAnimator.Play(DisableAnimation.name);
     }
 }
