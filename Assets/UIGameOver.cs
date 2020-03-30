@@ -67,6 +67,8 @@ public class UIGameOver : MonoBehaviour
     public void EnableUI()
     {
         scoreTimer = 0.0f;
+        prevLerpedScore = 0;
+
         newScoreText.text = player.GetScore().ToString();
         highScoreText.text = player.GetPrevHighScore().ToString();
         
