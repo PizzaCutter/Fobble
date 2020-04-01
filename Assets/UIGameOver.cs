@@ -20,7 +20,7 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private ParticleSystem NewHighScoreParticlesystem = null;
 
     private float scoreTimer = 0.0f;
-    private int prevLerpedScore = 0;
+    private int prevLerpedScore = -1;
     private bool reachedNewHighscore = false;
     private Animator Animator = null;
 
@@ -80,6 +80,12 @@ public class UIGameOver : MonoBehaviour
 
     public void DisableUI()
     {
+        if(prevLerpedScore == -1)
+        {
+            //otherwise will trigger animation when starting for first time
+            return;
+        }
+
         Animator.Play(DisableAnimation.name);
         NewHighScoreParticlesystem.gameObject.SetActive(false);
     }
