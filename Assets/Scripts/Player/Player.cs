@@ -45,9 +45,9 @@ public class Player : MonoBehaviour
         ProjectileSpawner.enabled = false;
 
         int highScore = PlayerPrefs.GetInt("HighScore");
+        previousHighScore = highScore;
         if (score > highScore)
         {
-            previousHighScore = highScore;
             PlayerPrefs.SetInt("HighScore", score);
         }
     }

@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         Player.Kill();
 
         OverlayButton.SetActive(true);
+        
         GameIntroUI.EnableUI();
         GameOverUI.EnableUI();
 
