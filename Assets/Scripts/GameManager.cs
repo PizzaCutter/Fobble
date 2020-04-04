@@ -25,9 +25,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIGameOver GameOverUI = null;
     [SerializeField] private UIGameIntro GameIntroUI = null;
 
+    [SerializeField] private AudioClip SFX_StartGame = null;
+    [SerializeField] private AudioClip SFX_GameOver = null;
+    private AudioSource AudioSourceComponent = null;
 
     void Start()
     {
+        AudioSourceComponent = GetComponent<AudioSource>();
         Time.timeScale = 0.0f;
     }
 
@@ -45,6 +49,9 @@ public class GameManager : MonoBehaviour
 
         
         Player.ResetPlayer();
+
+        AudioSourceComponent.clip = SFX_StartGame;
+        AudioSourceComponent.Play();
     }
 
     public void GameOver()
@@ -58,6 +65,9 @@ public class GameManager : MonoBehaviour
         GameIntroUI.EnableUI();
         GameOverUI.EnableUI();
 
+        AudioSourceComponent.clip = SFX_GameOver;
+        AudioSourceComponent.Play();
+        
         StartCoroutine(GameOverMenu());
     }
 

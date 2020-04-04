@@ -19,6 +19,12 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private float ScoreLerpTime = 2.0f;
     [SerializeField] private ParticleSystem NewHighScoreParticlesystem = null;
 
+    [SerializeField] private AudioClip SFX_ScoreTick = null;
+
+    [SerializeField] private AudioClip SFX_NewHighScore = null;
+
+    private AudioSource AudioSourceComponent = null;
+
     private float scoreTimer = 0.0f;
     private int prevLerpedScore = -1;
     private bool reachedNewHighscore = false;
@@ -27,6 +33,7 @@ public class UIGameOver : MonoBehaviour
     void Awake()
     {
         Animator = GetComponent<Animator>();
+        AudioSourceComponent = GetComponent<AudioSource>();
         player = FindObjectOfType<Player>();     
         scoreTimer = ScoreLerpTime;
     }
@@ -49,10 +56,12 @@ public class UIGameOver : MonoBehaviour
             if(prevLerpedScore != newLerpScore && newLerpScore > player.GetPrevHighScore())
             {
                 Animator.Play(ScoreNumbersChanged.name,0,0);
+                AudioSourceComponent.Play();
                 reachedNewHighscore = true;
             }else if(prevLerpedScore != newLerpScore)
             {
                 Animator.Play(CurrentScoreNumberChanged.name,0,0);
+                AudioSourceComponent.Play();
             }
 
             prevLerpedScore = newLerpScore;
@@ -61,6 +70,9 @@ public class UIGameOver : MonoBehaviour
             reachedNewHighscore = false;
             NewHighScoreParticlesystem.gameObject.SetActive(true);
             NewHighScoreParticlesystem.Play();
+
+            AudioSourceComponent.clip = SFX_NewHighScore;
+            AudioSourceComponent.Play();
         }
     }
 
@@ -76,6 +88,8 @@ public class UIGameOver : MonoBehaviour
         highScoreText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         Animator.Play(EnableAnimation.name);
+
+        AudioSourceComponent.clip = SFX_ScoreTick;
     }
 
     public void DisableUI()

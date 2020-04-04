@@ -27,6 +27,11 @@ public class Projectile : MonoBehaviour
 
     private ParticleSystem CachedDestroyedParticleSystem = null;
 
+    [SerializeField] private AudioClip HitWallAudioEffect = null;
+    [SerializeField] private AudioClip HitEnemyAudioEffect = null;
+
+    private AudioSource AudioComponent = null;
+
     void Awake()
     {
         Camera camera = Camera.main;
@@ -38,6 +43,7 @@ public class Projectile : MonoBehaviour
         ScreenWidth = (float)camera.scaledPixelWidth / (float)camera.scaledPixelHeight * 10.0f;
         ScreenHeight = (float)camera.scaledPixelHeight / (float)camera.scaledPixelWidth;
 
+        AudioComponent = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -70,10 +76,14 @@ public class Projectile : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x) > ScreenWidth / 2.0f)
         {
+            AudioComponent.clip = HitWallAudioEffect;
+            AudioComponent.Play();
             DestroyProjectile();
         }
         else if (Mathf.Abs(transform.position.y) > (ScreenHeight * ScreenWidth * 0.5f))
         {
+            AudioComponent.clip = HitWallAudioEffect;
+            AudioComponent.Play();
             DestroyProjectile();
         }
     }
@@ -87,6 +97,9 @@ public class Projectile : MonoBehaviour
         }
         enemy.Kill();
         player.AddScore();
+
+        AudioComponent.clip = HitEnemyAudioEffect;
+        AudioComponent.Play();
 
         DestroyProjectile();
     }
@@ -115,9 +128,11 @@ public class Projectile : MonoBehaviour
 
     IEnumerator DisableGameObjectAfterParticleEffect()
     {
+        float waitTime = CachedDestroyedParticleSystem.main.duration > AudioComponent.clip.length ? CachedDestroyedParticleSystem.main.duration : AudioComponent.clip.length;
         yield return new WaitForSeconds(CachedDestroyedParticleSystem.main.duration);
         CachedDestroyedParticleSystem.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        AudioComponent.clip = null;
     }
 
 }
