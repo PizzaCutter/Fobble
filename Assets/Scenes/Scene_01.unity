@@ -1419,7 +1419,7 @@ Transform:
   m_GameObject: {fileID: 1377811520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.6153846, y: 10, z: 1}
+  m_LocalScale: {x: 17.954971, y: 9.999999, z: 1}
   m_Children: []
   m_Father: {fileID: 1929738080}
   m_RootOrder: 1
@@ -1536,21 +1536,48 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 4
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.050069228
+      outSlope: 0.050069228
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 4
-      inSlope: Infinity
-      outSlope: Infinity
+      time: 79.97876
+      value: 8.004475
+      inSlope: 0.15185481
+      outSlope: 0.15185481
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.06358156
       outWeight: 0
+    - serializedVersion: 3
+      time: 175.89375
+      value: 8.484676
+      inSlope: 0.14520244
+      outSlope: 0.14520244
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.092873365
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 280.93466
+      value: 7.3849306
+      inSlope: 0.040977236
+      outSlope: 0.040977236
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 414.9126
+      value: 17.001068
+      inSlope: -0.057148214
+      outSlope: -0.057148214
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2217,33 +2244,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].value
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].inSlope
-      value: 0.44444445
+      value: -0.038014542
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].outSlope
-      value: 0.44444445
+      value: -0.038014542
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].inSlope
-      value: 0.44444445
+      value: -0.020203263
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].outSlope
-      value: 0.44444445
+      value: -0.020203263
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
       propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].value
-      value: 120
+      value: 139.75412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].time
+      value: 230.55049
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].time
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].value
+      value: 112.9233
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].inSlope
+      value: -0.3863356
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].outSlope
+      value: -0.3863356
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902453689795782649, guid: 7446dccd09031d14d8e96954c0476137,
+        type: 3}
+      propertyPath: RotationSpeedCurve.m_Curve.Array.data[0].outWeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4902453689795782651, guid: 7446dccd09031d14d8e96954c0476137,
         type: 3}
