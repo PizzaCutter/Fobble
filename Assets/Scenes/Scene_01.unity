@@ -1861,11 +1861,13 @@ MonoBehaviour:
   OverlayButton: {fileID: 1670690807}
   EnemySpawner: {fileID: 1444955908}
   Player: {fileID: 1158143672}
-  GameOverTime: 1
+  GameOverTime: 2
   GameOverUI: {fileID: 787480295}
   GameIntroUI: {fileID: 1483742943}
   SFX_StartGame: {fileID: 8300000, guid: 7f6ddfc430db8da40b9751208c9d5aca, type: 3}
   SFX_GameOver: {fileID: 8300000, guid: e9230031ffcce2944971789ab35804af, type: 3}
+  PlayAdInterval: 3
+  InitialAdInterval: 3
 --- !u!82 &1929738082
 AudioSource:
   m_ObjectHideFlags: 0

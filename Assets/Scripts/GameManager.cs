@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,8 +30,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip SFX_GameOver = null;
     private AudioSource AudioSourceComponent = null;
 
+    [SerializeField] private int PlayAdInterval = 3;
+    [SerializeField] private int InitialAdInterval = 3;
+    int gamesPlayed = 0;
+
+    string gameId = "3544699";
+    bool testMode = false;
+
+    bool shouldPlayAd = false;
+    bool playedAd = false;
+
     void Start()
     {
+        Advertisement.Initialize(gameId, testMode);
+
         AudioSourceComponent = GetComponent<AudioSource>();
         Time.timeScale = 0.0f;
     }
@@ -38,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         StopCoroutine(GameOverMenu());
+        CheckAdRun();
 
         Time.timeScale = 1.0f;
         EnemySpawner.StopSpawning = false;
@@ -56,6 +70,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        gamesPlayed = PlayerPrefs.GetInt("GamesPlayed");
+        gamesPlayed++;
+        PlayerPrefs.SetInt("GamesPlayed", gamesPlayed);
+
+        if(gamesPlayed == InitialAdInterval)
+        {
+            shouldPlayAd = true;
+            playedAd = false;
+        }else if(gamesPlayed % PlayAdInterval == 0)
+        {
+            shouldPlayAd = true;
+            playedAd = false;
+        }
+
         EnemySpawner.StopSpawning = true;
         EnemySpawner.KillAll();
         Player.Kill();
@@ -75,7 +103,16 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(GameOverTime);
        
-        //Time.timeScale = 0.0f;
+        CheckAdRun();
+    }
 
+    private void CheckAdRun()
+    {
+        if(shouldPlayAd && playedAd == false)
+        {
+            shouldPlayAd = false;
+            playedAd = true;
+            Advertisement.Show();
+        }
     }
 }
